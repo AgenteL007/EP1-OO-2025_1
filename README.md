@@ -5,14 +5,15 @@
 Desenvolvimento de um sistema acadêmico para gerenciar alunos, disciplinas, professores, turmas, avaliações e frequência, utilizando os conceitos de orientação a objetos (herança, polimorfismo e encapsulamento) e persistência de dados em arquivos.
 
 O enunciado do trabalho pode ser encontrado aqui:
+
 - [Trabalho 1 - Sistema Acadêmico](https://github.com/lboaventura25/OO-T06_2025.1_UnB_FCTE/blob/main/trabalhos/ep1/README.md)
 
 ## Dados do Aluno
 
-- **Nome completo:** [Preencher aqui]
-- **Matrícula:** [Preencher aqui]
-- **Curso:** [Preencher aqui]
-- **Turma:** [Preencher aqui]
+- **Nome completo:** Luccas Rodrigues dos Santos
+- **Matrícula:** 241025470
+- **Curso:** Orientação a Objetos
+- **Turma:** 06
 
 ---
 
@@ -27,7 +28,7 @@ O enunciado do trabalho pode ser encontrado aqui:
 3. **Estrutura de Pastas:**  
    [Descrever aqui as principais pastas do projeto]
 
-3. **Versão do JAVA utilizada:**  
+4. **Versão do JAVA utilizada:**  
    [Descrever aqui como versão do JAVA utilizada no projeto. Sugestão: `java 21`]
 
 ---
@@ -73,4 +74,4 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 ## Contato
 
-- [Opcional: E-mail pessoal do aluno.]
+- Email Pessoal: luccasrs2005@gmail.com
