@@ -50,7 +50,7 @@ public class Menu {
 
                                     break;
                                 case 5:
-                                    // Aqui coloca o que faz voltar para o menu
+                                    break; // Volta para o menu
                                 default:
                                     System.out.println("Opção inválida. Tente novamente.");
                             }
@@ -86,7 +86,7 @@ public class Menu {
 
                                     break;
                                 case 4:
-                                    // Aqui coloca o que faz voltar para o menu
+                                    break; // Volta para o menu
                                 default:
                                     System.out.println("Opção inválida. Tente novamente.");
                             }
@@ -151,7 +151,7 @@ public class Menu {
 
                                     break;
                                 case 9:
-                                    // Aqui coloca o que faz voltar para o menu
+                                    break; // Volta para o menu
                                 default:
                                     System.out.println("Opção inválida. Tente novamente.");
 
