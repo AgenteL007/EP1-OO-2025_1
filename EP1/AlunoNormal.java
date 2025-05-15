@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import java.util.ArrayList;
 
 public class AlunoNormal extends Aluno {
@@ -8,14 +7,6 @@ public class AlunoNormal extends Aluno {
     private int l; // Lista de Exercícios
     private int s; // Seminário
     private ArrayList<String> disciplinasCursando; // Quais disciplinas estão sendo cursadas
-=======
-public class AlunoNormal extends Aluno {
-    private int p1;
-    private int p2;
-    private int p3;
-    private int l;
-    private int s;
->>>>>>> 1a5e93b43467f059340589327d39a9c6989f1161
 
     public AlunoNormal() {
         this.p1 = 0;
