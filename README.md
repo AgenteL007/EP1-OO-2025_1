@@ -29,7 +29,7 @@ O enunciado do trabalho pode ser encontrado aqui:
    [Descrever aqui as principais pastas do projeto]
 
 4. **Versão do JAVA utilizada:**  
-   [Descrever aqui como versão do JAVA utilizada no projeto. Sugestão: `java 21`]
+   A versão utilizada foi o `java 21`.
 
 ---
 
