@@ -6,13 +6,15 @@ public class Aluno {
     private int matricula; // Matrícula do aluno
     private String curso; // Curso que o aluno faz
     private ArrayList<String> presencas; // Lista dos dias que o aluno foi ou faltou
-    private ArrayList<String> disciplinasCursadas;// Lista das disciplinas cursadas pelo aluno
+    private ArrayList<String> disciplinasCursadas; // Lista das disciplinas cursadas pelo aluno
+    protected ArrayList<String> disciplinasCursando; // Quais disciplinas estão sendo cursadas
 
     public Aluno() {
         this.nome = "";
         this.matricula = 0;
         this.curso = "";
         this.disciplinasCursadas = new ArrayList<>();
+        this.disciplinasCursando = new ArrayList<>();
     }
 
     public void setNome(String nome) {
@@ -79,6 +81,28 @@ public class Aluno {
     public void exibirDisciplinasCursadas() { // Exibe as disciplinas cursadas com sucesso
         for (String disciplinaCursada : disciplinasCursadas) {
             System.out.println(disciplinaCursada);
+        }
+    }
+
+    public void registrarDisciplinasCursando() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Digite o número de disciplinas que serão adicionadas: ");
+        int disciplinas = sc.nextInt();
+
+        System.out.println("Agora digite todas as disciplinas que serão cursadas no semestre atual:");
+
+        for (int i = 0; i < disciplinas; i++) {
+            String entrada = sc.nextLine();
+            disciplinasCursando.add(entrada);
+        }
+
+        sc.close(); // Fecha a entrada de leitura do teclado
+    }
+
+    public void exibirDiscipplinasCursando() {
+        for (String disciplinaCursando : disciplinasCursando) {
+            System.out.println(disciplinaCursando);
         }
     }
 }
