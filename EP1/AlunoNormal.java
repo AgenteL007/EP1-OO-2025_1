@@ -1,12 +1,9 @@
-import java.util.ArrayList;
-
 public class AlunoNormal extends Aluno {
     private int p1; // Prova 1
     private int p2; // Prova 2
     private int p3; // Prova 3
     private int l; // Lista de Exercícios
     private int s; // Seminário
-    private ArrayList<String> disciplinasCursando; // Quais disciplinas estão sendo cursadas
 
     public AlunoNormal() {
         this.p1 = 0;
