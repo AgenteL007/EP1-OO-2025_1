@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.Serializable;
 
-public class Aluno {
+public class Aluno implements Serializable {
     private String nome; // Nome do aluno
     private int matricula; // Matrícula do aluno
     private String curso; // Curso que o aluno faz
+    private boolean trancamento; // Se o semestre está ou não trancado
     private ArrayList<String> presencas; // Lista dos dias que o aluno foi ou faltou
     private ArrayList<String> disciplinasCursadas; // Lista das disciplinas cursadas pelo aluno
     protected ArrayList<String> disciplinasCursando; // Quais disciplinas estão sendo cursadas
@@ -13,6 +15,7 @@ public class Aluno {
         this.nome = "";
         this.matricula = 0;
         this.curso = "";
+        this.trancamento = false; // FALSE é porque o semestre não está trancado
         this.disciplinasCursadas = new ArrayList<>();
         this.disciplinasCursando = new ArrayList<>();
     }
@@ -39,6 +42,14 @@ public class Aluno {
 
     public String getCurso() {
         return curso;
+    }
+
+    public void setTrancamento(boolean trancamento) {
+        this.trancamento = trancamento;
+    }
+
+    public boolean getTrancamento() {
+        return trancamento;
     }
 
     public void registrarPresencas() {
