@@ -29,7 +29,7 @@ public class Turma {
         this.semestre = semestre;
     }
 
-    public int setSemestre() {
+    public int getSemestre() {
         return semestre;
     }
 
