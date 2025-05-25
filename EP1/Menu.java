@@ -1,13 +1,18 @@
 import java.util.Scanner;
-import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Menu {
+public class Menu extends DadosDeSalvamento {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         AlunoNormal alunoNormal = new AlunoNormal();
         AlunoEspecial alunoEspecial = new AlunoEspecial();
         Disciplina disciplina = new Disciplina();
         Turma turma = new Turma();
+        String arquivoAlunosNormal = "alunosNormal.txt";
+        String arquivoAlunosEspecial = "alunosEspecial.txt";
+        List<AlunoNormal> listaAlunosNormal = new ArrayList<>();
+        List<AlunoEspecial> listaAlunosEspecial = new ArrayList<>();
         int verificador = 0; // Para encerrar os loops depois
 
         System.out.println("===== SISTEMA ACADÊMICO DA FCTE =====");
@@ -53,7 +58,8 @@ public class Menu {
                                     System.out.println();
 
                                     System.out.print("Matrícula: ");
-                                    while (verificador != 0) {
+                                    verificador = 0;
+                                    while (verificador == 0) {
                                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
                                             alunoNormal.setMatricula(sc.nextInt());
                                             sc.nextLine(); // Limpa o buffer
@@ -70,6 +76,10 @@ public class Menu {
                                     alunoNormal.setCurso(sc.nextLine());
                                     System.out.println();
 
+                                    listaAlunosNormal.add(alunoNormal);
+
+                                    salvarAlunosNormal(listaAlunosNormal, arquivoAlunosNormal);
+
                                     break;
                                 case 2:
                                     System.out.println("Função de cadastro selecionada."); // Aluno Especial
@@ -80,7 +90,8 @@ public class Menu {
                                     System.out.println();
 
                                     System.out.print("Matrícula: ");
-                                    while (verificador != 0) {
+                                    verificador = 0;
+                                    while (verificador == 0) {
                                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
                                             alunoEspecial.setMatricula(sc.nextInt());
                                             sc.nextLine(); // Limpa o buffer
@@ -97,23 +108,67 @@ public class Menu {
                                     alunoEspecial.setCurso(sc.nextLine());
                                     System.out.println();
 
+                                    listaAlunosEspecial.add(alunoEspecial);
+
+                                    salvarAlunosEspecial(listaAlunosEspecial, arquivoAlunosEspecial);
+
                                     break;
                                 case 3:
-                                    System.out.println("Função de edição selecionada.");
+                                    System.out.println("Função de edição selecionada."); // Aluno Normal
                                     System.out.println();
 
                                     break;
                                 case 4:
-                                    System.out.println("Listagem dos alunos cadastrados no sistema:");
+                                    System.out.println("Função de edição selecionada."); // Aluno Especial
                                     System.out.println();
 
                                     break;
                                 case 5:
+                                    System.out.println("Listagem dos alunos cadastrados no sistema:");
+                                    System.out.println();
+
+                                    List<AlunoNormal> alunosNormalCarregado = carregarAlunosNormal(arquivoAlunosNormal);
+
+                                    System.out.println("Normal:");
+                                    System.out.println();
+                                    for (AlunoNormal alunoNormalCarregado : alunosNormalCarregado) {
+                                        System.out.println("Nome: " + alunoNormalCarregado.getNome());
+                                        System.out.println("Matrícula: " + alunoNormalCarregado.getMatricula());
+                                        System.out.println("Curso: " + alunoNormalCarregado.getCurso());
+                                        System.out.println("Trancado: " + alunoNormalCarregado.getTrancamento());
+                                        System.out
+                                                .println("Cursadas: " + alunoNormalCarregado.getDisciplinasCursadas());
+                                        System.out
+                                                .println("Cursando: " + alunoNormalCarregado.getDisciplinasCursando());
+                                        System.out.println("-------------------------");
+                                    }
+
+                                    System.out.println();
+
+                                    List<AlunoEspecial> alunosEspecialCarregado = carregarAlunosEspecial(
+                                            arquivoAlunosEspecial);
+
+                                    System.out.println("Especial:");
+                                    System.out.println();
+                                    for (AlunoEspecial alunoEspecialCarregado : alunosEspecialCarregado) {
+                                        System.out.println("Nome: " + alunoEspecialCarregado.getNome());
+                                        System.out.println("Matrícula: " + alunoEspecialCarregado.getMatricula());
+                                        System.out.println("Curso: " + alunoEspecialCarregado.getCurso());
+                                        System.out.println("Trancado: " + alunoEspecialCarregado.getTrancamento());
+                                        System.out.println(
+                                                "Cursadas: " + alunoEspecialCarregado.getDisciplinasCursadas());
+                                        System.out.println(
+                                                "Cursando: " + alunoEspecialCarregado.getDisciplinasCursando());
+                                        System.out.println("-------------------------");
+                                    }
+
+                                    break;
+                                case 6:
                                     System.out.println("Função de trancamento selecionada.");
                                     System.out.println();
 
                                     break;
-                                case 6:
+                                case 7:
                                     break; // Volta para o menu
                                 default:
                                     System.out.println();
@@ -153,7 +208,8 @@ public class Menu {
                                     System.out.println();
 
                                     System.out.print("Carga Horário: ");
-                                    while (verificador != 0) {
+                                    verificador = 0;
+                                    while (verificador == 0) {
                                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
                                             disciplina.setCargaHoraria(sc.nextInt());
                                             sc.nextLine(); // Limpa o buffer
@@ -177,7 +233,7 @@ public class Menu {
 
                                     System.out.print("Semestre: ");
                                     verificador = 0;
-                                    while (verificador != 0) {
+                                    while (verificador == 0) {
                                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
                                             turma.setSemestre(sc.nextInt());
                                             sc.nextLine(); // Limpa o buffer
@@ -196,7 +252,7 @@ public class Menu {
 
                                     System.out.print("Formato Presencial (1) / Remoto (2): ");
                                     verificador = 0;
-                                    while (verificador != 0) {
+                                    while (verificador == 0) {
                                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
                                             int formato = sc.nextInt();
                                             sc.nextLine(); // Limpa o buffer
@@ -224,7 +280,7 @@ public class Menu {
 
                                     System.out.print("Capacidade: ");
                                     verificador = 0;
-                                    while (verificador != 0) {
+                                    while (verificador == 0) {
                                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
                                             turma.setCapacidade(sc.nextInt());
                                             sc.nextLine(); // Limpa o buffer
@@ -286,7 +342,7 @@ public class Menu {
                                     System.out.print("Nota da P1: ");
                                     alunoNormal.setP1(sc.nextInt());
                                     verificador = 0;
-                                    while (verificador != 0) {
+                                    while (verificador == 0) {
                                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
                                             alunoNormal.setP1(sc.nextInt());
                                             sc.nextLine(); // Limpa o buffer
@@ -302,7 +358,7 @@ public class Menu {
                                     System.out.print("Nota da P2: ");
                                     alunoNormal.setP2(sc.nextInt());
                                     verificador = 0;
-                                    while (verificador != 0) {
+                                    while (verificador == 0) {
                                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
                                             alunoNormal.setP2(sc.nextInt());
                                             sc.nextLine(); // Limpa o buffer
@@ -318,7 +374,7 @@ public class Menu {
                                     System.out.print("Nota da P3: ");
                                     alunoNormal.setP3(sc.nextInt());
                                     verificador = 0;
-                                    while (verificador != 0) {
+                                    while (verificador == 0) {
                                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
                                             alunoNormal.setP3(sc.nextInt());
                                             sc.nextLine(); // Limpa o buffer
@@ -334,7 +390,7 @@ public class Menu {
                                     System.out.print("Nota da Lista de Exercícios: ");
                                     alunoNormal.setL(sc.nextInt());
                                     verificador = 0;
-                                    while (verificador != 0) {
+                                    while (verificador == 0) {
                                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
                                             alunoNormal.setL(sc.nextInt());
                                             sc.nextLine(); // Limpa o buffer
@@ -350,7 +406,7 @@ public class Menu {
                                     System.out.print("Nota do Seminário: ");
                                     alunoNormal.setS(sc.nextInt());
                                     verificador = 0;
-                                    while (verificador != 0) {
+                                    while (verificador == 0) {
                                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
                                             alunoNormal.setS(sc.nextInt());
                                             sc.nextLine(); // Limpa o buffer
@@ -369,15 +425,15 @@ public class Menu {
                                     System.out.println();
                                     System.out.print("Aluno Normal (1) / Especial (2): ");
                                     verificador = 0;
-                                    while (verificador != 0) {
+                                    while (verificador == 0) {
                                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
                                             int aluno = sc.nextInt();
                                             sc.nextLine(); // Limpa o buffer
 
                                             if (aluno == 1) {
-                                                alunoNormal.registrarPresencas();
+                                                alunoNormal.setPresencas(alunoNormal.presencas);
                                             } else if (aluno == 2) {
-                                                alunoEspecial.registrarPresencas();
+                                                alunoEspecial.setPresencas(alunoEspecial.presencas);
                                             }
                                         } else { // Caso não seja digitado um Inteiro
                                             System.out.println();

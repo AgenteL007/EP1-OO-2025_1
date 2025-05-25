@@ -1,8 +1,9 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class AlunoEspecial extends Aluno {
     @Override
-    public void registrarDisciplinasCursando() {
+    public void setDisciplinasCursando(ArrayList<String> disciplinasCursando) {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Digite o número de disciplinas que serão adicionadas: ");
