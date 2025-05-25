@@ -1,5 +1,5 @@
-import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Disciplina {
     private String nome; // Nome da disciplina
@@ -39,7 +39,7 @@ public class Disciplina {
         return cargaHoraria;
     }
 
-    public void RegistrarPreRequisitos() {
+    public void setPreRequisitos(ArrayList<String> preRequisitosNecessarios) {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Digite o número de pré-requisitos que serão adicionadas: ");
@@ -55,10 +55,12 @@ public class Disciplina {
         sc.close(); // Fecha a entrada de leitura do teclado
     }
 
-    public void ExibirPreRequisito() { // Exibe os Pré-Requisitos necessários para se matricular na Disciplina
-        for (String preRequisitoNecessario : preRequisitosNecessarios) {
-            System.out.println(preRequisitoNecessario);
-        }
+    public ArrayList<String> getPreRequisitos() {
+        return preRequisitosNecessarios;
+    }
+
+    public void setTurma(Turma turma) {
+        this.turma = turma;
     }
 
     public Turma getTurma() {

@@ -1,14 +1,13 @@
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Aluno implements Serializable {
-    private String nome; // Nome do aluno
-    private int matricula; // Matrícula do aluno
-    private String curso; // Curso que o aluno faz
-    private boolean trancamento; // Se o semestre está ou não trancado
-    private ArrayList<String> presencas; // Lista dos dias que o aluno foi ou faltou
-    private ArrayList<String> disciplinasCursadas; // Lista das disciplinas cursadas pelo aluno
+public class Aluno {
+    protected String nome; // Nome do aluno
+    protected int matricula; // Matrícula do aluno
+    protected String curso; // Curso que o aluno faz
+    protected boolean trancamento; // Se o semestre está ou não trancado
+    protected ArrayList<String> presencas; // Lista dos dias que o aluno foi ou faltou
+    protected ArrayList<String> disciplinasCursadas; // Lista das disciplinas cursadas pelo aluno
     protected ArrayList<String> disciplinasCursando; // Quais disciplinas estão sendo cursadas
 
     public Aluno() {
@@ -52,68 +51,101 @@ public class Aluno implements Serializable {
         return trancamento;
     }
 
-    public void registrarPresencas() {
+    public void setPresencas(ArrayList<String> presencas) {
         Scanner sc = new Scanner(System.in);
+        int verificador = 0;
 
         System.out.print("Digite o número de aulas ministradas: "); // Pega o número total de aulas
-        int aulas = sc.nextInt();
+        while (verificador == 0)
+            if (sc.hasNext()) { // Verifica se a próxima entrada é um Inteiro
+                int aulas = sc.nextInt();
+                sc.nextLine(); // Limpa o buffer
 
-        for (int i = 0; i < aulas; i++) { // Cria uma lista da presença do aluno até aquela aula ministrada
-            System.out.print("Aula " + (i + 1) + ": ");
-            String entrada = sc.nextLine();
-            presencas.add(entrada);
-        }
+                for (int i = 0; i < aulas; i++) { // Cria uma lista da presença do aluno até aquela aula ministrada
+                    System.out.print("Aula " + (i + 1) + ": ");
+                    String entrada = sc.nextLine();
+                    presencas.add(entrada);
+                }
 
-        sc.close(); // Fecha a entrada de leitura do teclado
+                verificador = 1;
+
+                sc.close(); // Fecha a entrada de leitura do teclado
+            } else { // Caso não seja digitado um Inteiro
+                System.out.println();
+                System.out.println("Entrada inválida. Digite apenas números.");
+                sc.nextLine();
+            }
+    }
+
+    public ArrayList<String> getPresencas() {
+        return presencas;
+    }
+
+    public void setDisciplinasCursadas(ArrayList<String> disciplinasCursadas) {
+        Scanner sc = new Scanner(System.in);
+        int verificador = 0;
+
+        System.out.print("Digite o número de disciplinas que serão adicionadas: ");
+        while (verificador == 0)
+            if (sc.hasNext()) { // Verifica se a próxima entrada é um Inteiro
+                int disciplinas = sc.nextInt();
+                sc.nextLine(); // Limpa o buffer
+
+                System.out.println("Agora digite todas as disciplinas cursadas com sucesso pelo aluno:");
+
+                for (int i = 0; i < disciplinas; i++) {
+                    String entrada = sc.nextLine();
+                    disciplinasCursadas.add(entrada);
+                }
+
+                verificador = 1;
+
+                sc.close(); // Fecha a entrada de leitura do teclado
+            } else { // Caso não seja digitado um Inteiro
+                System.out.println();
+                System.out.println("Entrada inválida. Digite apenas números.");
+                sc.nextLine();
+            }
+    }
+
+    public ArrayList<String> getDisciplinasCursadas() {
+        return disciplinasCursadas;
+    }
+
+    public void setDisciplinasCursando(ArrayList<String> disciplinasCursando) {
+        Scanner sc = new Scanner(System.in);
+        int verificador = 0;
+
+        System.out.print("Digite o número de disciplinas que serão adicionadas: ");
+        while (verificador == 0)
+            if (sc.hasNext()) { // Verifica se a próxima entrada é um Inteiro
+                int disciplinas = sc.nextInt();
+                sc.nextLine(); // Limpa o buffer
+
+                System.out.println("Agora digite todas as disciplinas que serão cursadas no semestre atual:");
+
+                for (int i = 0; i < disciplinas; i++) {
+                    String entrada = sc.nextLine();
+                    disciplinasCursando.add(entrada);
+                }
+
+                verificador = 1;
+
+                sc.close(); // Fecha a entrada de leitura do teclado
+            } else { // Caso não seja digitado um Inteiro
+                System.out.println();
+                System.out.println("Entrada inválida. Digite apenas números.");
+                sc.nextLine();
+            }
+    }
+
+    public ArrayList<String> getDisciplinasCursando() {
+        return disciplinasCursando;
     }
 
     public void exibirPresencas() { // Exibe a presença do aluno
         for (int i = 0; i < presencas.size(); i++) {
             System.out.println("Aula " + (i + 1) + ": " + presencas.get(i));
-        }
-    }
-
-    public void registrarDisciplinasCursadas() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Digite o número de disciplinas que serão adicionadas: ");
-        int disciplinas = sc.nextInt();
-
-        System.out.println("Agora digite todas as disciplinas cursadas com sucesso pelo aluno:");
-
-        for (int i = 0; i < disciplinas; i++) {
-            String entrada = sc.nextLine();
-            disciplinasCursadas.add(entrada);
-        }
-
-        sc.close(); // Fecha a entrada de leitura do teclado
-    }
-
-    public void exibirDisciplinasCursadas() { // Exibe as disciplinas cursadas com sucesso
-        for (String disciplinaCursada : disciplinasCursadas) {
-            System.out.println(disciplinaCursada);
-        }
-    }
-
-    public void registrarDisciplinasCursando() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Digite o número de disciplinas que serão adicionadas: ");
-        int disciplinas = sc.nextInt();
-
-        System.out.println("Agora digite todas as disciplinas que serão cursadas no semestre atual:");
-
-        for (int i = 0; i < disciplinas; i++) {
-            String entrada = sc.nextLine();
-            disciplinasCursando.add(entrada);
-        }
-
-        sc.close(); // Fecha a entrada de leitura do teclado
-    }
-
-    public void exibirDiscipplinasCursando() {
-        for (String disciplinaCursando : disciplinasCursando) {
-            System.out.println(disciplinaCursando);
         }
     }
 }
