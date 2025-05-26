@@ -161,7 +161,7 @@ public class DadosDeSalvamento {
                 writer.newLine();
                 writer.write("Semestre: " + turma.getSemestre());
                 writer.newLine();
-                writer.write("Avaliação: " + turma.getAvaliacao());
+                writer.write("Forma de Avaliação: " + turma.getAvaliacao());
                 writer.newLine();
                 writer.write("Formato: " + turma.getFormato());
                 writer.newLine();
@@ -204,8 +204,8 @@ public class DadosDeSalvamento {
                     turma.setProfessor(linha.split(": ", 2)[1]);
                 } else if (linha.startsWith("Semestre: ")) {
                     turma.setSemestre(Integer.parseInt(linha.split(": ", 2)[1]));
-                } else if (linha.startsWith("Avaliação: ")) {
-                    turma.setProfessor(linha.split(": ", 2)[1]);
+                } else if (linha.startsWith("Forma de Avaliação: ")) {
+                    turma.setAvaliacao(Boolean.parseBoolean(linha.split(": ", 2)[1]));
                 } else if (linha.startsWith("Formato: ")) {
                     turma.setFormato(Boolean.parseBoolean(linha.split(": ", 2)[1]));
                 } else if (linha.startsWith("Sala: ")) {
@@ -236,7 +236,7 @@ public class DadosDeSalvamento {
                 writer.newLine();
                 writer.write("Semestre: " + turma.getSemestre());
                 writer.newLine();
-                writer.write("Avaliação: " + turma.getAvaliacao());
+                writer.write("Forma de Avaliação: " + turma.getAvaliacao());
                 writer.newLine();
                 writer.write("Formato: " + turma.getFormato());
                 writer.newLine();
@@ -270,8 +270,8 @@ public class DadosDeSalvamento {
                     turma.setProfessor(linha.split(": ", 2)[1]);
                 } else if (linha.startsWith("Semestre: ")) {
                     turma.setSemestre(Integer.parseInt(linha.split(": ", 2)[1]));
-                } else if (linha.startsWith("Avaliação: ")) {
-                    turma.setProfessor(linha.split(": ", 2)[1]);
+                } else if (linha.startsWith("Forma de Avaliação: ")) {
+                    turma.setAvaliacao(Boolean.parseBoolean(linha.split(": ", 2)[1]));
                 } else if (linha.startsWith("Formato: ")) {
                     turma.setFormato(Boolean.parseBoolean(linha.split(": ", 2)[1]));
                 } else if (linha.startsWith("Sala: ")) {
@@ -281,7 +281,6 @@ public class DadosDeSalvamento {
                 } else if (linha.startsWith("Capacidade: ")) {
                     turma.setCapacidade(Integer.parseInt(linha.split(": ", 2)[1]));
                 } else if (linha.startsWith("-------------------------")) {
-
                     turmas.add(turma); // Fim de uma turma
                 }
             }
@@ -292,5 +291,165 @@ public class DadosDeSalvamento {
             System.out.println("Erro ao carregar o arquivo: " + e.getMessage());
         }
         return turmas;
+    }
+
+    public static void salvarNotasAlunoNormal(List<AlunoNormal> alunosNormal, String arquivo) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivo))) {
+            for (AlunoNormal alunoNormal : alunosNormal) {
+                writer.write("Nome: " + alunoNormal.getNome());
+                writer.newLine();
+                writer.write("Matrícula " + alunoNormal.getMatricula());
+                writer.newLine();
+                writer.write("Nota da P1: " + alunoNormal.getP1());
+                writer.newLine();
+                writer.write("Nota da P2: " + alunoNormal.getP2());
+                writer.newLine();
+                writer.write("Nota da P3: " + alunoNormal.getP3());
+                writer.newLine();
+                writer.write("Lista de Exercícios: " + alunoNormal.getL());
+                writer.newLine();
+                writer.write("Seminário: " + alunoNormal.getS());
+                writer.newLine();
+                writer.write("-------------------------");
+                writer.newLine();
+            }
+            System.out.println("Notas salvas com sucesso!");
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar as notas. Tente novamente.");
+            e.printStackTrace();
+        }
+    }
+
+    public static List<AlunoNormal> carregarNotasAlunoNormal(String arquivo) {
+        List<AlunoNormal> alunosNormal = new ArrayList<>();
+
+        try (BufferedReader leitor = new BufferedReader(new FileReader(arquivo))) {
+            String linha;
+            AlunoNormal alunoNormal = null;
+
+            while ((linha = leitor.readLine()) != null) {
+                if (linha.startsWith("Nome: ")) {
+                    alunoNormal = new AlunoNormal();
+                    alunoNormal.setNome(linha.split(": ", 2)[1]);
+                } else if (linha.startsWith("Matrícula: ")) {
+                    alunoNormal.setMatricula(Integer.parseInt(linha.split(": ", 2)[1]));
+                } else if (linha.startsWith("Nota da P1: ")) {
+                    alunoNormal.setP1(Float.parseFloat(linha.split(": ", 2)[1]));
+                } else if (linha.startsWith("Nota da P2: ")) {
+                    alunoNormal.setP2(Float.parseFloat(linha.split(": ", 2)[1]));
+                } else if (linha.startsWith("Nota da P3: ")) {
+                    alunoNormal.setP3(Float.parseFloat(linha.split(": ", 2)[1]));
+                } else if (linha.startsWith("Nota da Lista de Exercícios: ")) {
+                    alunoNormal.setL(Float.parseFloat(linha.split(": ", 2)[1]));
+                } else if (linha.startsWith("Nota do Seminário: ")) {
+                    alunoNormal.setS(Float.parseFloat(linha.split(": ", 2)[1]));
+                } else if (linha.startsWith("-------------------------")) {
+                    alunosNormal.add(alunoNormal); // Fim das notas de um aluno
+                }
+            }
+
+            System.out.println("Notas carregadas com sucesso!");
+
+        } catch (IOException e) {
+            System.out.println("Erro ao carregar o arquivo: " + e.getMessage());
+        }
+
+        return alunosNormal;
+    }
+
+    public static void salvarPresencasAlunoNormal(List<AlunoNormal> alunosNormal, String arquivo) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivo))) {
+            for (AlunoNormal alunoNormal : alunosNormal) {
+                writer.write("Nome: " + alunoNormal.getNome());
+                writer.newLine();
+                writer.write("Matrícula " + alunoNormal.getMatricula());
+                writer.newLine();
+                writer.write("Presença: " + alunoNormal.getPresencas());
+                writer.newLine();
+                writer.write("-------------------------");
+                writer.newLine();
+            }
+            System.out.println("Presença salva com sucesso!");
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar a presença. Tente novamente.");
+            e.printStackTrace();
+        }
+    }
+
+    public static List<AlunoNormal> carregarPresencasAlunoNormal(String arquivo) {
+        List<AlunoNormal> alunosNormal = new ArrayList<>();
+
+        try (BufferedReader leitor = new BufferedReader(new FileReader(arquivo))) {
+            String linha;
+            AlunoNormal alunoNormal = null;
+
+            while ((linha = leitor.readLine()) != null) {
+                if (linha.startsWith("Nome: ")) {
+                    alunoNormal = new AlunoNormal();
+                    alunoNormal.setNome(linha.split(": ", 2)[1]);
+                } else if (linha.startsWith("Matrícula: ")) {
+                    alunoNormal.setMatricula(Integer.parseInt(linha.split(": ", 2)[1]));
+                } else if (linha.startsWith("Presença: ")) {
+                    alunoNormal.setPresencas(stringParaLista(linha.split(": ", 2)[1]));
+                } else if (linha.startsWith("-------------------------")) {
+                    alunosNormal.add(alunoNormal); // Fim da presença de um aluno
+                }
+            }
+
+            System.out.println("Presença carregada com sucesso!");
+
+        } catch (IOException e) {
+            System.out.println("Erro ao carregar o arquivo: " + e.getMessage());
+        }
+
+        return alunosNormal;
+    }
+
+    public static void salvarPresencasAlunoEspecial(List<AlunoEspecial> listaPresencasAlunoEspecial, String arquivo) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivo))) {
+            for (AlunoEspecial alunoEspecial : listaPresencasAlunoEspecial) {
+                writer.write("Nome: " + alunoEspecial.getNome());
+                writer.newLine();
+                writer.write("Matrícula " + alunoEspecial.getMatricula());
+                writer.newLine();
+                writer.write("Presença: " + alunoEspecial.getPresencas());
+                writer.newLine();
+                writer.write("-------------------------");
+                writer.newLine();
+            }
+            System.out.println("Presença salva com sucesso!");
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar a presença. Tente novamente.");
+            e.printStackTrace();
+        }
+    }
+
+    public static List<AlunoEspecial> carregarPresencasAlunoEspecial(String arquivo) {
+        List<AlunoEspecial> alunosEspecial = new ArrayList<>();
+
+        try (BufferedReader leitor = new BufferedReader(new FileReader(arquivo))) {
+            String linha;
+            AlunoEspecial alunoEspecial = null;
+
+            while ((linha = leitor.readLine()) != null) {
+                if (linha.startsWith("Nome: ")) {
+                    alunoEspecial = new AlunoEspecial();
+                    alunoEspecial.setNome(linha.split(": ", 2)[1]);
+                } else if (linha.startsWith("Matrícula: ")) {
+                    alunoEspecial.setMatricula(Integer.parseInt(linha.split(": ", 2)[1]));
+                } else if (linha.startsWith("Presença: ")) {
+                    alunoEspecial.setPresencas(stringParaLista(linha.split(": ", 2)[1]));
+                } else if (linha.startsWith("-------------------------")) {
+                    alunosEspecial.add(alunoEspecial); // Fim da presença de um aluno
+                }
+            }
+
+            System.out.println("Presença carregada com sucesso!");
+
+        } catch (IOException e) {
+            System.out.println("Erro ao carregar o arquivo: " + e.getMessage());
+        }
+
+        return alunosEspecial;
     }
 }
