@@ -11,8 +11,12 @@ public class Menu extends DadosDeSalvamento {
         Turma turma = new Turma();
         String arquivoAlunosNormal = "alunosNormal.txt";
         String arquivoAlunosEspecial = "alunosEspecial.txt";
+        String arquivoDisciplinas = "disciplinas.txt";
+        String arquivoTurmas = "turmas.txt";
         List<AlunoNormal> listaAlunosNormal = new ArrayList<>();
         List<AlunoEspecial> listaAlunosEspecial = new ArrayList<>();
+        List<Disciplina> listaDisciplinas = new ArrayList<>();
+        List<Turma> listaTurmas = new ArrayList<>();
         int verificador = 0; // Para encerrar os loops depois
 
         System.out.println("===== SISTEMA ACADÊMICO DA FCTE =====");
@@ -222,6 +226,10 @@ public class Menu extends DadosDeSalvamento {
                                     }
                                     System.out.println();
 
+                                    listaDisciplinas.add(disciplina);
+
+                                    salvarDisciplinas(listaDisciplinas, arquivoDisciplinas);
+
                                     break;
                                 case 2:
                                     System.out.println("Função de criação selecionada.");
@@ -246,8 +254,24 @@ public class Menu extends DadosDeSalvamento {
                                     }
                                     System.out.println();
 
-                                    System.out.print("Forma de Avaliação: ");
-                                    turma.setAvaliacao(sc.nextLine());
+                                    System.out.print("Forma de Avaliação Sem Peso (1) / Com Peso (2): ");
+                                    verificador = 0;
+                                    while (verificador == 0) {
+                                        if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
+                                            int forma = sc.nextInt();
+                                            sc.nextLine(); // Limpa o buffer
+
+                                            if (forma == 1) {
+                                                // FALSE é (p1 + p2 + p3 + l + s) / 5
+                                            } else if (forma == 2) {
+                                                turma.setFormato(true); // TRUE é (p1 + p2 * 2 + p3 * 3 + l + s) / 8
+                                            }
+                                        } else { // Caso não seja digitado um Inteiro
+                                            System.out.println();
+                                            System.out.println("Entrada inválida. Digite apenas números.");
+                                            sc.nextLine();
+                                        }
+                                    }
                                     System.out.println();
 
                                     System.out.print("Formato Presencial (1) / Remoto (2): ");
@@ -293,9 +317,28 @@ public class Menu extends DadosDeSalvamento {
                                     }
                                     System.out.println();
 
+                                    listaTurmas.add(turma);
+
+                                    salvarTurmas(listaTurmas, arquivoTurmas);
+
                                     break;
                                 case 3:
                                     System.out.println("Listagem das turmas cadastradas no sistema.");
+                                    System.out.println();
+
+                                    List<Turma> turmasCarregado = carregarTurmas(arquivoTurmas);
+
+                                    for (Turma turmaCarregado : turmasCarregado) {
+                                        System.out.println("Professor: " + turmaCarregado.getProfessor());
+                                        System.out.println("Semestre: " + turmaCarregado.getSemestre());
+                                        System.out.println("Avaliação: " + turmaCarregado.getAvaliacao());
+                                        System.out.println("Formato: " + turmaCarregado.getFormato());
+                                        System.out.println("Sala: " + turmaCarregado.getSala());
+                                        System.out.println("Horário: " + turmaCarregado.getHorario());
+                                        System.out.println("Capacidade: " + turmaCarregado.getCapacidade());
+                                        System.out.println("-------------------------");
+                                    }
+
                                     System.out.println();
 
                                     break;
