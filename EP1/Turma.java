@@ -1,7 +1,7 @@
 public class Turma {
     private String professor; // Nome do professor da turma
     private int semestre; // De qual semestre a turma é
-    private String avaliacao; // Forma de avaliação
+    private boolean avaliacao; // Se a forma de avaliação tem peso ou não
     private boolean formato;// Se é presencial ou remoto
     private String sala; // Sala da turma
     private String horario; // Horário da aula
@@ -10,7 +10,8 @@ public class Turma {
     public Turma() {
         this.professor = "";
         this.semestre = 0;
-        this.avaliacao = "";
+        this.avaliacao = false; // FALSE é (p1 + p2 + p3 + l + s) / 5 e TRUE é (p1 + p2 * 2 + p3 * 3 + l + s) /
+                                // 8
         this.formato = true; // TRUE é porque tem sala
         this.sala = "";
         this.horario = "";
@@ -33,11 +34,11 @@ public class Turma {
         return semestre;
     }
 
-    public void setAvaliacao(String avaliacao) {
+    public void setAvaliacao(boolean avaliacao) {
         this.avaliacao = avaliacao;
     }
 
-    public String getAvaliacao() {
+    public boolean getAvaliacao() {
         return avaliacao;
     }
 
