@@ -61,6 +61,8 @@ public class Aluno {
                 int aulas = sc.nextInt();
                 sc.nextLine(); // Limpa o buffer
 
+                System.out.println("Escreva PRESENTE ou FALTOU de acordo com a situação do aluno no dia.");
+
                 for (int i = 0; i < aulas; i++) { // Cria uma lista da presença do aluno até aquela aula ministrada
                     System.out.print("Aula " + (i + 1) + ": ");
                     String entrada = sc.nextLine();
@@ -143,9 +145,19 @@ public class Aluno {
         return disciplinasCursando;
     }
 
-    public void exibirPresencas() { // Exibe a presença do aluno
+    public void exibirPresencas() { // Exibe a presença do aluno e diz se ele reprovou por falta
+        float falta = 0;
+        float porcentagemPresenca = 0;
+
         for (int i = 0; i < presencas.size(); i++) {
-            System.out.println("Aula " + (i + 1) + ": " + presencas.get(i));
+            if (presencas.get(i).equalsIgnoreCase("falta")) {
+                falta++;
+                porcentagemPresenca = falta / i;
+            }
+        }
+
+        if (porcentagemPresenca >= 0.25) {
+            System.out.println("Aluno reprovado por faltas.");
         }
     }
 }

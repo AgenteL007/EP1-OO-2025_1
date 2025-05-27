@@ -13,10 +13,16 @@ public class Menu extends DadosDeSalvamento {
         String arquivoAlunosEspecial = "alunosEspecial.txt";
         String arquivoDisciplinas = "disciplinas.txt";
         String arquivoTurmas = "turmas.txt";
+        String arquivoNotasAlunoNormal = "notasAlunoNormal.txt";
+        String arquivoPresencasAlunoNormal = "presencasAlunoNormal.txt";
+        String arquivoPresencasAlunoEspecial = "presencasAlunoEspecial.txt";
         List<AlunoNormal> listaAlunosNormal = new ArrayList<>();
         List<AlunoEspecial> listaAlunosEspecial = new ArrayList<>();
         List<Disciplina> listaDisciplinas = new ArrayList<>();
         List<Turma> listaTurmas = new ArrayList<>();
+        List<AlunoNormal> listaNotasAlunoNormal = new ArrayList<>();
+        List<AlunoNormal> listaPresencasAlunoNormal = new ArrayList<>();
+        List<AlunoEspecial> listaPresencasAlunoEspecial = new ArrayList<>();
         int verificador = 0; // Para encerrar os loops depois
 
         System.out.println("===== SISTEMA ACADÊMICO DA FCTE =====");
@@ -382,8 +388,26 @@ public class Menu extends DadosDeSalvamento {
                                     System.out.println("Função de lançamento de notas selecionada.");
                                     System.out.println();
 
+                                    System.out.print("Nome: ");
+                                    alunoNormal.setNome(sc.nextLine());
+                                    System.out.println();
+
+                                    System.out.print("Matrícula: ");
+                                    verificador = 0;
+                                    while (verificador == 0) {
+                                        if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
+                                            alunoNormal.setMatricula(sc.nextInt());
+                                            sc.nextLine(); // Limpa o buffer
+                                            verificador = 1;
+                                        } else { // Caso não seja digitado um Inteiro
+                                            System.out.println();
+                                            System.out.println("Entrada inválida. Digite apenas números.");
+                                            sc.nextLine();
+                                        }
+                                    }
+                                    System.out.println();
+
                                     System.out.print("Nota da P1: ");
-                                    alunoNormal.setP1(sc.nextInt());
                                     verificador = 0;
                                     while (verificador == 0) {
                                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
@@ -399,7 +423,6 @@ public class Menu extends DadosDeSalvamento {
                                     System.out.println();
 
                                     System.out.print("Nota da P2: ");
-                                    alunoNormal.setP2(sc.nextInt());
                                     verificador = 0;
                                     while (verificador == 0) {
                                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
@@ -415,7 +438,6 @@ public class Menu extends DadosDeSalvamento {
                                     System.out.println();
 
                                     System.out.print("Nota da P3: ");
-                                    alunoNormal.setP3(sc.nextInt());
                                     verificador = 0;
                                     while (verificador == 0) {
                                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
@@ -431,7 +453,6 @@ public class Menu extends DadosDeSalvamento {
                                     System.out.println();
 
                                     System.out.print("Nota da Lista de Exercícios: ");
-                                    alunoNormal.setL(sc.nextInt());
                                     verificador = 0;
                                     while (verificador == 0) {
                                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
@@ -447,7 +468,6 @@ public class Menu extends DadosDeSalvamento {
                                     System.out.println();
 
                                     System.out.print("Nota do Seminário: ");
-                                    alunoNormal.setS(sc.nextInt());
                                     verificador = 0;
                                     while (verificador == 0) {
                                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
@@ -462,6 +482,8 @@ public class Menu extends DadosDeSalvamento {
                                     }
                                     System.out.println();
 
+                                    salvarNotasAlunoNormal(listaNotasAlunoNormal, arquivoNotasAlunoNormal);
+
                                     break;
                                 case 2:
                                     System.out.println("Função de lançamento de presença selecionada.");
@@ -474,9 +496,55 @@ public class Menu extends DadosDeSalvamento {
                                             sc.nextLine(); // Limpa o buffer
 
                                             if (aluno == 1) {
+                                                System.out.print("Nome: ");
+                                                alunoNormal.setNome(sc.nextLine());
+                                                System.out.println();
+
+                                                System.out.print("Matrícula: ");
+                                                verificador = 0;
+                                                while (verificador == 0) {
+                                                    if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
+                                                        alunoNormal.setMatricula(sc.nextInt());
+                                                        sc.nextLine(); // Limpa o buffer
+                                                        verificador = 1;
+                                                    } else { // Caso não seja digitado um Inteiro
+                                                        System.out.println();
+                                                        System.out.println("Entrada inválida. Digite apenas números.");
+                                                        sc.nextLine();
+                                                    }
+                                                }
+                                                System.out.println();
+
                                                 alunoNormal.setPresencas(alunoNormal.presencas);
+
+                                                salvarPresencasAlunoNormal(listaPresencasAlunoNormal,
+                                                        arquivoPresencasAlunoNormal);
+
                                             } else if (aluno == 2) {
+                                                System.out.print("Nome: ");
+                                                alunoEspecial.setNome(sc.nextLine());
+                                                System.out.println();
+
+                                                System.out.print("Matrícula: ");
+                                                verificador = 0;
+                                                while (verificador == 0) {
+                                                    if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
+                                                        alunoEspecial.setMatricula(sc.nextInt());
+                                                        sc.nextLine(); // Limpa o buffer
+                                                        verificador = 1;
+                                                    } else { // Caso não seja digitado um Inteiro
+                                                        System.out.println();
+                                                        System.out.println("Entrada inválida. Digite apenas números.");
+                                                        sc.nextLine();
+                                                    }
+                                                }
+                                                System.out.println();
+
                                                 alunoEspecial.setPresencas(alunoEspecial.presencas);
+
+                                                salvarPresencasAlunoEspecial(listaPresencasAlunoEspecial,
+                                                        arquivoPresencasAlunoEspecial);
+
                                             }
                                         } else { // Caso não seja digitado um Inteiro
                                             System.out.println();
@@ -489,6 +557,58 @@ public class Menu extends DadosDeSalvamento {
                                     break;
                                 case 3:
                                     System.out.println("Listagem de aprovados e reprovados selecionada.");
+                                    System.out.println();
+
+                                    List<AlunoNormal> notasAlunoNormalCarregado = carregarNotasAlunoNormal(
+                                            arquivoNotasAlunoNormal);
+                                    List<AlunoNormal> presencasAlunoNormalCarregado = carregarPresencasAlunoNormal(
+                                            arquivoPresencasAlunoNormal);
+
+                                    System.out.println("Normal:");
+                                    System.out.println();
+                                    for (AlunoNormal notaAlunoNormalCarregado : notasAlunoNormalCarregado) {
+                                        System.out.println("Nome: " + notaAlunoNormalCarregado.getNome());
+                                        System.out.println("Matrícula " + notaAlunoNormalCarregado.getMatricula());
+                                        System.out.println("Nota da P1: " + notaAlunoNormalCarregado.getP1());
+                                        System.out.println("Nota da P2: " + notaAlunoNormalCarregado.getP2());
+                                        System.out.println("Nota da P3: " + notaAlunoNormalCarregado.getP3());
+                                        System.out.println(
+                                                "Nota da Lista de Exercícios: " + notaAlunoNormalCarregado.getL());
+                                        System.out.println("Nota do Seminário: " + notaAlunoNormalCarregado.getS());
+                                        System.out.print("Sem Peso: ");
+                                        notaAlunoNormalCarregado.verificarAprovacaoSemPeso(
+                                                notaAlunoNormalCarregado.getP1(),
+                                                notaAlunoNormalCarregado.getP2(), notaAlunoNormalCarregado.getP3(),
+                                                notaAlunoNormalCarregado.getL(), notaAlunoNormalCarregado.getS());
+                                        System.out.print("Com Peso: ");
+                                        notaAlunoNormalCarregado.verificarAprovacaoComPeso(
+                                                notaAlunoNormalCarregado.getP1(),
+                                                notaAlunoNormalCarregado.getP2(), notaAlunoNormalCarregado.getP3(),
+                                                notaAlunoNormalCarregado.getL(), notaAlunoNormalCarregado.getS());
+                                        System.out.println("-------------------------");
+                                    }
+                                    for (AlunoNormal presencaAlunoNormalCarregado : presencasAlunoNormalCarregado) {
+                                        System.out.println("Nome: " + presencaAlunoNormalCarregado.getNome());
+                                        System.out.println("Matrícula " + presencaAlunoNormalCarregado.getMatricula());
+                                        presencaAlunoNormalCarregado.exibirPresencas();
+                                        System.out.println("-------------------------");
+                                    }
+
+                                    System.out.println();
+
+                                    List<AlunoEspecial> presencasAlunoEspecialCarregado = carregarPresencasAlunoEspecial(
+                                            arquivoPresencasAlunoEspecial);
+
+                                    System.out.println("Especial:");
+                                    System.out.println();
+                                    for (AlunoEspecial presencaAlunoEspecialCarregado : presencasAlunoEspecialCarregado) {
+                                        System.out.println("Nome: " + presencaAlunoEspecialCarregado.getNome());
+                                        System.out
+                                                .println("Matrícula " + presencaAlunoEspecialCarregado.getMatricula());
+                                        presencaAlunoEspecialCarregado.exibirPresencas();
+                                        System.out.println("-------------------------");
+                                    }
+
                                     System.out.println();
 
                                     break;
@@ -513,7 +633,7 @@ public class Menu extends DadosDeSalvamento {
 
                                     break;
                                 case 8:
-                                    System.out.println("Função de exibição de boletim COM dados da turma selecionada.");
+                                    System.out.println("Função de exibição de boletim SEM dados da turma selecionada.");
                                     System.out.println();
 
                                     break;
