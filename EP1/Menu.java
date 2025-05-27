@@ -48,10 +48,11 @@ public class Menu extends DadosDeSalvamento {
                         System.out.println("Modo Aluno (Normal e Especial) selecionado. Escolha uma função:");
                         System.out.println("Função 1 - Cadastrar novo aluno (normal)");
                         System.out.println("Função 2 - Cadastrar novo aluno (especial)");
-                        System.out.println("Função 3 - Editar aluno existente");
-                        System.out.println("Função 4 - Listar alunos cadastrados no sistema");
-                        System.out.println("Função 5 - Trancar disciplina/semestre");
-                        System.out.println("6. Voltar para o menu");
+                        System.out.println("Função 3 - Editar aluno existente (normal)");
+                        System.out.println("Função 4 - Editar aluno existente (especial)");
+                        System.out.println("Função 5 - Listar alunos cadastrados no sistema");
+                        System.out.println("Função 6 - Trancar disciplina/semestre");
+                        System.out.println("7. Voltar para o menu");
                         System.out.print("Acessar a função: ");
 
                         if (sc.hasNextInt()) { // Verifica se a próxima entrada é um Inteiro
@@ -65,7 +66,6 @@ public class Menu extends DadosDeSalvamento {
 
                                     System.out.print("Nome: ");
                                     alunoNormal.setNome(sc.nextLine());
-                                    System.out.println();
 
                                     System.out.print("Matrícula: ");
                                     verificador = 0;
@@ -80,11 +80,17 @@ public class Menu extends DadosDeSalvamento {
                                             sc.nextLine();
                                         }
                                     }
-                                    System.out.println();
 
                                     System.out.print("Curso: ");
                                     alunoNormal.setCurso(sc.nextLine());
-                                    System.out.println();
+
+                                    System.out.print("Disciplinas cursadas: ");
+                                    ArrayList<String> disciplinasCursadas = new ArrayList<>();
+                                    alunoNormal.setDisciplinasCursadas(disciplinasCursadas);
+
+                                    System.out.print("Disciplinas cursando: ");
+                                    ArrayList<String> disciplinasCursando = new ArrayList<>();
+                                    alunoNormal.setDisciplinasCursando(disciplinasCursando);
 
                                     listaAlunosNormal.add(alunoNormal);
 
@@ -93,11 +99,9 @@ public class Menu extends DadosDeSalvamento {
                                     break;
                                 case 2:
                                     System.out.println("Função de cadastro selecionada."); // Aluno Especial
-                                    System.out.println();
 
                                     System.out.print("Nome: ");
                                     alunoEspecial.setNome(sc.nextLine());
-                                    System.out.println();
 
                                     System.out.print("Matrícula: ");
                                     verificador = 0;
@@ -112,7 +116,6 @@ public class Menu extends DadosDeSalvamento {
                                             sc.nextLine();
                                         }
                                     }
-                                    System.out.println();
 
                                     System.out.print("Curso: ");
                                     alunoEspecial.setCurso(sc.nextLine());
@@ -171,6 +174,7 @@ public class Menu extends DadosDeSalvamento {
                                                 "Cursando: " + alunoEspecialCarregado.getDisciplinasCursando());
                                         System.out.println("-------------------------");
                                     }
+                                    System.out.println();
 
                                     break;
                                 case 6:
@@ -211,11 +215,9 @@ public class Menu extends DadosDeSalvamento {
 
                                     System.out.print("Nome: ");
                                     disciplina.setNome(sc.nextLine());
-                                    System.out.println();
 
                                     System.out.print("Código: ");
                                     disciplina.setCodigo(sc.nextLine());
-                                    System.out.println();
 
                                     System.out.print("Carga Horário: ");
                                     verificador = 0;
@@ -243,7 +245,6 @@ public class Menu extends DadosDeSalvamento {
 
                                     System.out.print("Professor: ");
                                     turma.setProfessor(sc.nextLine());
-                                    System.out.println();
 
                                     System.out.print("Semestre: ");
                                     verificador = 0;
@@ -258,7 +259,6 @@ public class Menu extends DadosDeSalvamento {
                                             sc.nextLine();
                                         }
                                     }
-                                    System.out.println();
 
                                     System.out.print("Forma de Avaliação Sem Peso (1) / Com Peso (2): ");
                                     verificador = 0;
@@ -278,7 +278,6 @@ public class Menu extends DadosDeSalvamento {
                                             sc.nextLine();
                                         }
                                     }
-                                    System.out.println();
 
                                     System.out.print("Formato Presencial (1) / Remoto (2): ");
                                     verificador = 0;
@@ -298,15 +297,12 @@ public class Menu extends DadosDeSalvamento {
                                             sc.nextLine();
                                         }
                                     }
-                                    System.out.println();
 
                                     System.out.print("Sala: ");
                                     turma.setSala(sc.nextLine());
-                                    System.out.println();
 
                                     System.out.print("Horário: ");
                                     turma.setHorario(sc.nextLine());
-                                    System.out.println();
 
                                     System.out.print("Capacidade: ");
                                     verificador = 0;
@@ -390,7 +386,6 @@ public class Menu extends DadosDeSalvamento {
 
                                     System.out.print("Nome: ");
                                     alunoNormal.setNome(sc.nextLine());
-                                    System.out.println();
 
                                     System.out.print("Matrícula: ");
                                     verificador = 0;
@@ -405,7 +400,6 @@ public class Menu extends DadosDeSalvamento {
                                             sc.nextLine();
                                         }
                                     }
-                                    System.out.println();
 
                                     System.out.print("Nota da P1: ");
                                     verificador = 0;
@@ -420,7 +414,6 @@ public class Menu extends DadosDeSalvamento {
                                             sc.nextLine();
                                         }
                                     }
-                                    System.out.println();
 
                                     System.out.print("Nota da P2: ");
                                     verificador = 0;
@@ -435,7 +428,6 @@ public class Menu extends DadosDeSalvamento {
                                             sc.nextLine();
                                         }
                                     }
-                                    System.out.println();
 
                                     System.out.print("Nota da P3: ");
                                     verificador = 0;
@@ -450,7 +442,6 @@ public class Menu extends DadosDeSalvamento {
                                             sc.nextLine();
                                         }
                                     }
-                                    System.out.println();
 
                                     System.out.print("Nota da Lista de Exercícios: ");
                                     verificador = 0;
@@ -465,7 +456,6 @@ public class Menu extends DadosDeSalvamento {
                                             sc.nextLine();
                                         }
                                     }
-                                    System.out.println();
 
                                     System.out.print("Nota do Seminário: ");
                                     verificador = 0;
@@ -498,7 +488,6 @@ public class Menu extends DadosDeSalvamento {
                                             if (aluno == 1) {
                                                 System.out.print("Nome: ");
                                                 alunoNormal.setNome(sc.nextLine());
-                                                System.out.println();
 
                                                 System.out.print("Matrícula: ");
                                                 verificador = 0;
@@ -513,7 +502,6 @@ public class Menu extends DadosDeSalvamento {
                                                         sc.nextLine();
                                                     }
                                                 }
-                                                System.out.println();
 
                                                 alunoNormal.setPresencas(alunoNormal.presencas);
 
@@ -523,7 +511,6 @@ public class Menu extends DadosDeSalvamento {
                                             } else if (aluno == 2) {
                                                 System.out.print("Nome: ");
                                                 alunoEspecial.setNome(sc.nextLine());
-                                                System.out.println();
 
                                                 System.out.print("Matrícula: ");
                                                 verificador = 0;
@@ -538,7 +525,6 @@ public class Menu extends DadosDeSalvamento {
                                                         sc.nextLine();
                                                     }
                                                 }
-                                                System.out.println();
 
                                                 alunoEspecial.setPresencas(alunoEspecial.presencas);
 
@@ -593,7 +579,6 @@ public class Menu extends DadosDeSalvamento {
                                         presencaAlunoNormalCarregado.exibirPresencas();
                                         System.out.println("-------------------------");
                                     }
-
                                     System.out.println();
 
                                     List<AlunoEspecial> presencasAlunoEspecialCarregado = carregarPresencasAlunoEspecial(
@@ -608,7 +593,6 @@ public class Menu extends DadosDeSalvamento {
                                         presencaAlunoEspecialCarregado.exibirPresencas();
                                         System.out.println("-------------------------");
                                     }
-
                                     System.out.println();
 
                                     break;
