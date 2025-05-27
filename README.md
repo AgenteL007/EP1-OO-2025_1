@@ -20,13 +20,32 @@ O enunciado do trabalho pode ser encontrado aqui:
 ## Instruções para Compilação e Execução
 
 1. **Compilação:**  
-   [Descrever aqui como compilar o projeto. Exemplo: `javac Main.java` ou o script usado]
+   Escrever no terminal: `javac Menu.java Aluno.java AlunoEspecial.java AlunoNormal.java DadosDeSalvamento.java Disciplina.java Turma.java`
 
 2. **Execução:**  
-   [Descrever aqui como executar o projeto. Exemplo: `java Main` ou o script usado]
+   Clicar no comando `Run Java` usando o ambiente do VS Code.
 
 3. **Estrutura de Pastas:**  
-   [Descrever aqui as principais pastas do projeto]
+   Trabalho EP1 de OO
+
+   - EP1-OO-2025_1
+     - EP1
+       - Aluno.java
+       - AlunoEspecial.java
+       - AlunoNormal.java
+       - DadosDeSalvamento.java
+       - Disciplina.java
+       - Menu.java
+       - Turma.java
+     - EP1 (compilado)
+       - Aluno.class
+       - AlunoEspecial.class
+       - AlunoNormal.class
+       - DadosDeSalvamento.class
+       - Disciplina.class
+       - Menu.class
+       - Turma.java
+     - README.md
 
 4. **Versão do JAVA utilizada:**  
    A versão utilizada foi o `java 21`.
