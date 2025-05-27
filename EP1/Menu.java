@@ -84,13 +84,13 @@ public class Menu extends DadosDeSalvamento {
                                     System.out.print("Curso: ");
                                     alunoNormal.setCurso(sc.nextLine());
 
-                                    System.out.print("Disciplinas cursadas: ");
-                                    ArrayList<String> disciplinasCursadas = new ArrayList<>();
-                                    alunoNormal.setDisciplinasCursadas(disciplinasCursadas);
+                                    System.out.println("Disciplinas cursadas.");
+                                    ArrayList<String> disciplinasCursadasAlunoNormal = new ArrayList<>();
+                                    alunoNormal.setDisciplinasCursadas(disciplinasCursadasAlunoNormal);
 
-                                    System.out.print("Disciplinas cursando: ");
-                                    ArrayList<String> disciplinasCursando = new ArrayList<>();
-                                    alunoNormal.setDisciplinasCursando(disciplinasCursando);
+                                    System.out.println("Disciplinas cursando.");
+                                    ArrayList<String> disciplinasCursandoAlunoNormal = new ArrayList<>();
+                                    alunoNormal.setDisciplinasCursando(disciplinasCursandoAlunoNormal);
 
                                     listaAlunosNormal.add(alunoNormal);
 
@@ -120,6 +120,14 @@ public class Menu extends DadosDeSalvamento {
                                     System.out.print("Curso: ");
                                     alunoEspecial.setCurso(sc.nextLine());
                                     System.out.println();
+
+                                    System.out.println("Disciplinas cursadas.");
+                                    ArrayList<String> disciplinasCursadasAlunoEspecial = new ArrayList<>();
+                                    alunoEspecial.setDisciplinasCursadas(disciplinasCursadasAlunoEspecial);
+
+                                    System.out.println("Disciplinas cursando.");
+                                    ArrayList<String> disciplinasCursandoAlunoEspecial = new ArrayList<>();
+                                    alunoEspecial.setDisciplinasCursando(disciplinasCursandoAlunoEspecial);
 
                                     listaAlunosEspecial.add(alunoEspecial);
 
