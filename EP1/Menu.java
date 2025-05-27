@@ -87,10 +87,12 @@ public class Menu extends DadosDeSalvamento {
                                     System.out.println("Disciplinas cursadas.");
                                     ArrayList<String> disciplinasCursadasAlunoNormal = new ArrayList<>();
                                     alunoNormal.setDisciplinasCursadas(disciplinasCursadasAlunoNormal);
+                                    sc.nextLine();
 
                                     System.out.println("Disciplinas cursando.");
                                     ArrayList<String> disciplinasCursandoAlunoNormal = new ArrayList<>();
                                     alunoNormal.setDisciplinasCursando(disciplinasCursandoAlunoNormal);
+                                    sc.nextLine();
 
                                     listaAlunosNormal.add(alunoNormal);
 
@@ -124,10 +126,12 @@ public class Menu extends DadosDeSalvamento {
                                     System.out.println("Disciplinas cursadas.");
                                     ArrayList<String> disciplinasCursadasAlunoEspecial = new ArrayList<>();
                                     alunoEspecial.setDisciplinasCursadas(disciplinasCursadasAlunoEspecial);
+                                    sc.nextLine();
 
                                     System.out.println("Disciplinas cursando.");
                                     ArrayList<String> disciplinasCursandoAlunoEspecial = new ArrayList<>();
                                     alunoEspecial.setDisciplinasCursando(disciplinasCursandoAlunoEspecial);
+                                    sc.nextLine();
 
                                     listaAlunosEspecial.add(alunoEspecial);
 
