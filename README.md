@@ -61,7 +61,8 @@ O enunciado do trabalho pode ser encontrado aqui:
 ## Prints da Execução
 
 1. Menu Principal:  
-   ![Inserir Print 1](caminho/do/print1.png)
+   ![alt text](<Prints/MenuPrincipal(Print 1).png>)
+   ![alt text](<Prints/MenuPrincipal(Print2).png>)
 
 2. Cadastro de Aluno:  
    ![Inserir Print 2](caminho/do/print2.png)
