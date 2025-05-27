@@ -25,27 +25,27 @@ O enunciado do trabalho pode ser encontrado aqui:
 2. **Execução:**  
    Clicar no comando `Run Java` usando o ambiente do VS Code.
 
-3. **Estrutura de Pastas:**  
-   Trabalho EP1 de OO
+3. **Estrutura de Pastas:**
 
-   - EP1-OO-2025_1
-     - EP1
-       - Aluno.java
-       - AlunoEspecial.java
-       - AlunoNormal.java
-       - DadosDeSalvamento.java
-       - Disciplina.java
-       - Menu.java
-       - Turma.java
-     - EP1 (compilado)
-       - Aluno.class
-       - AlunoEspecial.class
-       - AlunoNormal.class
-       - DadosDeSalvamento.class
-       - Disciplina.class
-       - Menu.class
-       - Turma.java
-     - README.md
+- Trabalho EP1 de OO
+  - EP1-OO-2025_1
+    - EP1
+      - Aluno.java
+      - AlunoEspecial.java
+      - AlunoNormal.java
+      - DadosDeSalvamento.java
+      - Disciplina.java
+      - Menu.java
+      - Turma.java
+    - EP1 (compilado)
+      - Aluno.class
+      - AlunoEspecial.class
+      - AlunoNormal.class
+      - DadosDeSalvamento.class
+      - Disciplina.class
+      - Menu.class
+      - Turma.java
+    - README.md
 
 4. **Versão do JAVA utilizada:**  
    A versão utilizada foi o `java 21`.
@@ -73,21 +73,30 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 ## Principais Funcionalidades Implementadas
 
-- [ ] Cadastro, listagem, matrícula e trancamento de alunos (Normais e Especiais)
-- [ ] Cadastro de disciplinas e criação de turmas (presenciais e remotas)
-- [ ] Matrícula de alunos em turmas, respeitando vagas e pré-requisitos
-- [ ] Lançamento de notas e controle de presença
-- [ ] Cálculo de média final e verificação de aprovação/reprovação
-- [ ] Relatórios de desempenho acadêmico por aluno, turma e disciplina
-- [ ] Persistência de dados em arquivos (.txt ou .csv)
-- [ ] Tratamento de duplicidade de matrículas
-- [ ] Uso de herança, polimorfismo e encapsulamento
+- [S] Cadastro, listagem, matrícula e trancamento de alunos (Normais e Especiais)
+- [S] Cadastro de disciplinas e criação de turmas (presenciais e remotas)
+- [N] Matrícula de alunos em turmas, respeitando vagas e pré-requisitos
+- [S] Lançamento de notas e controle de presença
+- [S] Cálculo de média final e verificação de aprovação/reprovação
+- [N] Relatórios de desempenho acadêmico por aluno, turma e disciplina
+- [S] Persistência de dados em arquivos (.txt ou .csv)
+- [N] Tratamento de duplicidade de matrículas
+- [S] Uso de herança, polimorfismo e encapsulamento
 
 ---
 
 ## Observações (Extras ou Dificuldades)
 
-- [Espaço para o aluno comentar qualquer funcionalidade extra que implementou, dificuldades enfrentadas, ou considerações importantes.]
+Extras:
+
+- O Atributo 'trancamento' da Classe "Aluno" funciona assim: FALSE é porque o semestre não está trancado e TRUE é porque o semestre está trancado.
+- O Atributo 'avaliacao' da Classe "Turma" funciona assim: FALSE é porque a forma de avaliação não tem peso (P1 + P2 + P3 + L + S) e TRUE é porque a forma de avaliação tem peso ((P1 + P2 _ 2 + P3 _ 3 + L + S) / 8).
+- O Atributo 'formato' da Classe "Turma" funciona assim: TRUE é porque é presencial e FALSE é porque é remoto.
+
+Dificuldades:
+
+- Foi extremamente difícil fazer os dados serem salvos em arquivos. Apesar de ter uma Classe que os salva e os carrega, não está do jeito mais organizado que eu gostaria que fosse. A falta de explicação em aula e de slides a respeito disso atrapalhou bastante o andamento do projeto e comprometeu a criação de outras funcionalidade.
+- Não foi possível implementar todas as funcionalidades requeridas inicialmente e algumas poderiam funcionar de forma mais adequada.
 
 ---
 
