@@ -54,21 +54,21 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 ## Vídeo de Demonstração
 
-- [Inserir o link para o vídeo no YouTube/Drive aqui]
+- Não foi possível fazer um vídeo de demonstração
 
 ---
 
 ## Prints da Execução
 
-1. Menu Principal:  
-   ![alt text](<Prints/MenuPrincipal(Print 1).png>)
+1. Menu Principal:
+   ![alt text](<Prints/MenuPrincipal(Print1).png>)
    ![alt text](<Prints/MenuPrincipal(Print2).png>)
 
 2. Cadastro de Aluno:  
-   ![Inserir Print 2](caminho/do/print2.png)
+   Não há prints pois não está completamente funcional
 
-3. Relatório de Frequência/Notas:  
-   ![Inserir Print 3](caminho/do/print3.png)
+3. Relatório de Frequência/Notas:
+   ![alt text](<Prints/RelatórioDeFrequênciaNotas(Print3).png>)
 
 ---
 
@@ -97,7 +97,7 @@ Extras:
 Dificuldades:
 
 - Foi extremamente difícil fazer os dados serem salvos em arquivos. Apesar de ter uma Classe que os salva e os carrega, não está do jeito mais organizado que eu gostaria que fosse. A falta de explicação em aula e de slides a respeito disso atrapalhou bastante o andamento do projeto e comprometeu a criação de outras funcionalidade.
-- Não foi possível implementar todas as funcionalidades requeridas inicialmente e algumas poderiam funcionar de forma mais adequada.
+- Não foi possível implementar todas as funcionalidades requeridas inicialmente e algumas poderiam funcionar de forma mais adequada. Além disso, algumas, apesar de haver o código escrito, não funcionam corretamente.
 
 ---
 
